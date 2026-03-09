@@ -11,4 +11,6 @@ func main() {
 	fmt.Println("dsd")
 	feature1.Feature1()
 	feature2.Feature2()
+	// fddgdf
+	fmt.Println("cverf")
 }
