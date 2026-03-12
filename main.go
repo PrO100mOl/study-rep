@@ -5,6 +5,7 @@ import (
 
 	"tester/feature1"
 	"tester/feature2"
+	simpconnect "tester/feature_postgres/simp_connect"
 )
 
 func main() {
@@ -14,4 +15,9 @@ func main() {
 	// kyufsds
 	// fddgdf
 	fmt.Println("cverf")
+	con, err := simpconnect.CheckConnection()
+	if err == nil {
+		fmt.Print("норм")
+	}
+	_ = con
 }
