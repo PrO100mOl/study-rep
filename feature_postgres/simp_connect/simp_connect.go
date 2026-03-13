@@ -6,15 +6,6 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-func CheckConnection() (*pgx.Conn, error) {
-	res, err := pgx.Connect(context.Background(), "postgres://postgres:mol@localhost:5432/postgres")
-	if err != nil {
-		panic(err)
-	}
-
-	err = res.Ping(context.Background())
-	if err != nil {
-		panic(err)
-	}
-	return res, nil
+func CheckConnection(ctx context.Context) (*pgx.Conn, error) {
+	return pgx.Connect(ctx, "postgres://postgres:mol@localhost:5432/postgres")
 }
