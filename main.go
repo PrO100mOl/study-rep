@@ -1,23 +1,62 @@
 package main
 
 import (
+	"context"
 	"fmt"
+	"time"
 
-	"tester/feature1"
-	"tester/feature2"
 	simpconnect "tester/feature_postgres/simp_connect"
+	simpsql "tester/feature_postgres/simp_sql"
 )
 
 func main() {
-	fmt.Println("dsd")
-	feature1.Feature1()
-	feature2.Feature2()
-	// kyufsds
-	// fddgdf
-	fmt.Println("cverf")
-	con, err := simpconnect.CheckConnection()
-	if err == nil {
-		fmt.Print("норм")
+	ctx := context.Background()
+	con, err := simpconnect.CheckConnection(ctx)
+	if err != nil {
+		panic(err)
 	}
-	_ = con
+	fmt.Print("норм")
+
+	err = simpsql.CreateTable(con, ctx)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("все сохдало")
+	// err = simpsql.InsertRow(con,
+	// 	ctx,
+	// 	"Oбед",
+	// 	"покушать",
+	// 	false,
+	// 	time.Now(),
+	// )
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// if err := simpsql.UpdateRow(ctx, con); err != nil {
+	// 	fmt.Println(err)
+	// 	panic(err)
+	// }
+	// if err := simpsql.DeleteRow(ctx, con); err != nil {
+	// 	panic(err)
+	// }
+
+	// res, err := simpsql.SelectRows(ctx, con)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// pp.Println(res)
+
+	err = simpsql.UpdateTask(ctx, con, simpsql.Task{
+		ID:           1,
+		Title:        "walk",
+		Description:  "go",
+		Completed:    false,
+		Created_at:   time.Now(),
+		Completed_at: nil,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("good boy")
 }
