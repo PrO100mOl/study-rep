@@ -1,0 +1,1 @@
+ALTER TABLE users ADD about VARCHAR(400);
