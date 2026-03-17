@@ -15,13 +15,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Print("норм")
+	fmt.Println("норм")
 
-	err = simpsql.CreateTable(con, ctx)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println("все сохдало")
+	// err = simpsql.CreateTable(con, ctx)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// fmt.Println("все сохдало")
 	// err = simpsql.InsertRow(con,
 	// 	ctx,
 	// 	"Oбед",
@@ -48,7 +48,7 @@ func main() {
 
 	err = simpsql.UpdateTask(ctx, con, simpsql.Task{
 		ID:           1,
-		Title:        "walk",
+		Title:        "dump",
 		Description:  "go",
 		Completed:    false,
 		Created_at:   time.Now(),
