@@ -1,19 +1,19 @@
 package main
 
 import (
-	"context"
 	"fmt"
 
-	simpconnect "tester/feature_postgres/simp_connect"
+	httpserver "tester/http_server"
 )
 
 func main() {
-	ctx := context.Background()
-	con, err := simpconnect.CheckConnection(ctx)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("норм")
+	fmt.Println("страрт")
+	// ctx := context.Background()
+	// con, err := simpconnect.CheckConnection(ctx)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println("норм")
 
 	// err = simpsql.CreateTable(con, ctx)
 	// if err != nil {
@@ -65,15 +65,21 @@ func main() {
 	// 	panic(err)
 	// }
 
-	SQLQ := `SELECT * FROM users
-	`
-	res, err := con.Query(ctx, SQLQ)
+	// SQLQ := `SELECT * FROM users
+	// `
+	// res, err := con.Query(ctx, SQLQ)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// var we, tre string
+	// err = res.Scan(&we, &tre)
+	// fmt.Println(res.Next())
+	// fmt.Println(we, tre)
+	// fmt.Println("good boy")
+
+	err := httpserver.StartHTTPServer()
 	if err != nil {
 		panic(err)
 	}
-	var we, tre string
-	err = res.Scan(&we, &tre)
-	fmt.Println(res.Next())
-	fmt.Println(we, tre)
-	fmt.Println("good boy")
+	fmt.Println("good")
 }

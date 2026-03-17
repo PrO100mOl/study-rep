@@ -2,7 +2,7 @@ include .env
 export
 
 service-run:
-	go run main.go
+	@go run main.go
 
 mig-up:
 	migrate -path migrations -database ${abiba} up 1
