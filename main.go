@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Print("норм")
+	fmt.Println("норм")
 
 	// err = simpsql.CreateTable(con, ctx)
 	// if err != nil {
