@@ -6,4 +6,6 @@ COPY . .
 
 RUN go mod tidy
 
-CMD ["make", "service-run"]
+RUN go build -o /app/exe main.go
+
+CMD ["/app/exe"]
